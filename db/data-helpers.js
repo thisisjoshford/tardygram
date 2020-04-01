@@ -1,9 +1,11 @@
 require('dotenv').config();
 
 const connect = require('../lib/utils/connect');
-const seed = require('../db/seed');
+const seed = require('./seed');
 const mongoose = require('mongoose');
 const fs = require('fs');
+const request = require('supertest');
+const app = require('../lib/app');
 
 beforeAll(() => {
   connect();
@@ -15,6 +17,16 @@ beforeEach(() => {
 
 beforeEach(() => {
   return seed();
+});
+
+const agent = request.agent(app);
+beforeEach(() => {
+  return agent
+    .post('/api/v1/auth/login')
+    .send({
+      username: 'j0shf0rd',
+      password: 's3cr3t'
+    });
 });
 
 afterAll(() => {
@@ -40,7 +52,7 @@ const getters = files
     };
   }, {});
 console.log(getters);
-module.exports = getters;
+module.exports = { getters, getAgent: () => agent };
 
 // *** normal
 // const cookies = await getCookies();
