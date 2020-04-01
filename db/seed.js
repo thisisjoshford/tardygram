@@ -4,7 +4,7 @@ const chance = require('chance').Chance();
 
 module.exports = async({ usersToCreate = 10 } = {}) => {
   await User.create({
-    email: 'josh@josh.com',
+    username: 'joshford',
     password: 'password'
   });
 
