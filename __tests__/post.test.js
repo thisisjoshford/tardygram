@@ -11,9 +11,9 @@ describe('post routes', () => {
       .send({
         photoUrl: 'http://www.placekitten.com/200/200',
         caption: 'If I fits... I sits...',
-        tags: ['test1, test2'],
+        tags: ['#icanhazkitten, cutekitten'],
         user: user._id
-      })
+      })  
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
