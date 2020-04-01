@@ -3,8 +3,12 @@ const chance = require('chance').Chance();
 
 
 module.exports = async({ usersToCreate = 10 } = {}) => {
+  await User.create({
+    email: 'josh@josh.com',
+    password: 'password'
+  });
 
-  const user = await User.create([...Array(usersToCreate)].map(() => ({
+  const user = await User.create([...Array(usersToCreate)].slice(1).map(() => ({
     username: chance.name(),
     passwordHash: chance.hash(),
     profilePhotoUrl: 'http://www.placekitten.com/200/200'

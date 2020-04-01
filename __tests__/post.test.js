@@ -5,7 +5,7 @@ const app = require('../lib/app');
 
 describe('post routes', () => {
   it('posts a post', async() => {
-    const user = await getUser({ username: 'j0shf0rd' });
+    const user = await getUser({ username: 'josh@josh.com' });
     return getAgent()
       .post('/api/v1/posts')
       .send({
