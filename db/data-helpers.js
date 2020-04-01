@@ -52,7 +52,7 @@ const getters = files
     };
   }, {});
 console.log(getters);
-module.exports = { getters, getAgent: () => agent };
+module.exports = { ...getters, getAgent: () => agent };
 
 // *** normal
 // const cookies = await getCookies();
