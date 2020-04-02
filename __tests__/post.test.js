@@ -13,14 +13,14 @@ describe('post routes', () => {
         user: user._id,
         photoUrl: 'http://www.placekitten.com/200/200',
         caption: 'If I fits... I sits...',
-        tags: ['#icanhazkitten, cutekitten']
+        tags: ['#icanhazkitten, #cutekitten']
       })  
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
           photoUrl: 'http://www.placekitten.com/200/200',
           caption: 'If I fits... I sits...',
-          tags: ['#icanhazkitten, cutekitten'],
+          tags: ['#icanhazkitten, #cutekitten'],
           user: user._id,
           __v: 0
         });
