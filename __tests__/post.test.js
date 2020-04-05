@@ -26,4 +26,15 @@ describe('post routes', () => {
         });
       });
   });
+
+  it('gets all the posts', async() => {
+    const posts = await getPosts();
+    return request(app)
+      .get('/api/v1/post')  
+      .then(res => {
+        expect(res.body).toEqual({
+          ...posts
+        });
+      });
+  });
 });
