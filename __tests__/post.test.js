@@ -36,4 +36,19 @@ describe('post routes', () => {
           .toEqual([...posts]);
       });
   });
+
+  it('gets a post by id', async() => {
+    const post = await getPost();
+    return request(app)
+      .get(`/api/v1/post/${post._id}`)  
+      .then(res => {
+        expect(res.body)
+          .toEqual({
+            user: post.username,
+            photoUrl: post.photoUrl,
+            caption: post.caption,
+            tags: post.tags
+          });
+      });
+  });
 });
