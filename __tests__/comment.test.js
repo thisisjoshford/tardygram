@@ -34,10 +34,10 @@ describe('comment routes', () => {
       .then(res => {
         console.log(res.body);
         expect(res.body).toEqual({
-          _id: expect.any(String),
-          post: post._id,
-          comment: 'Sweet Post!',
-          commentBy: user._id,
+          _id: comment._id,
+          post: comment.post,
+          comment: comment.comment,
+          commentBy: comment.commentBy,
           __v: 0
         });
       });

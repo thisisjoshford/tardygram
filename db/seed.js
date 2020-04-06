@@ -32,5 +32,4 @@ module.exports = async({ usersToCreate = 10, postsToCreate = 10, commentsToCreat
       post: chance.pickone(post),
       comment: `Sweet ${chance.animal()}`
     })));
-
 };
