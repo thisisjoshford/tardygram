@@ -25,4 +25,21 @@ describe('comment routes', () => {
         });
       });
   });
+
+  it('deletes a comment by id and returns result', async() => {
+    const user = await getUser({ username: 'joshford' });
+    const comment = await getComment();
+    return getAgent()
+      .delete(`/api/v1/comment/${comment._id}`)  
+      .then(res => {
+        console.log(res.body);
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          post: post._id,
+          comment: 'Sweet Post!',
+          commentBy: user._id,
+          __v: 0
+        });
+      });
+  });
 });
