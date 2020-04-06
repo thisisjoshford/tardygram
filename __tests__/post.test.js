@@ -93,4 +93,19 @@ describe('post routes', () => {
       });
   });
 
+  it('gets 10 posts w/ the most comments', async() => {
+    return request(app)
+      .get('/api/v1/post/popular')
+      .then(res => {
+        expect(res.body).toHaveLength(10);
+        expect(res.body).toContainEqual({
+          _id: expect.any(String), 
+          user: expect.any(String), 
+          photoUrl: expect.any(String),
+          caption: expect.any(String),
+          numComments: expect.any(Number)
+        });
+      });
+  });
+
 });
