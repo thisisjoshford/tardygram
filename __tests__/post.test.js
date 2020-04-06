@@ -103,7 +103,7 @@ describe('post routes', () => {
           user: expect.any(String), 
           photoUrl: expect.any(String),
           caption: expect.any(String),
-          numComments: expect.any(Number)
+          // numComments: expect.any(Number)
         });
       });
   });
