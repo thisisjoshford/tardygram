@@ -32,9 +32,8 @@ describe('post routes', () => {
     return request(app)
       .get('/api/v1/post')  
       .then(res => {
-        expect(res.body).toEqual({
-          ...posts
-        });
+        expect(res.body)
+          .toEqual([...posts]);
       });
   });
 });
