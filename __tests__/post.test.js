@@ -44,10 +44,12 @@ describe('post routes', () => {
       .then(res => {
         expect(res.body)
           .toEqual({
-            user: post.username,
+            _id: post._id.toString(),
+            user: expect.any(String),
             photoUrl: post.photoUrl,
             caption: post.caption,
-            tags: post.tags
+            tags: post.tags,
+            __v:0
           });
       });
   });
