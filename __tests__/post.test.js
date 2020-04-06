@@ -42,6 +42,7 @@ describe('post routes', () => {
     return request(app)
       .get(`/api/v1/post/${post._id}`)  
       .then(res => {
+        console.log(res.body);
         expect(res.body)
           .toEqual({
             _id: post._id.toString(),
