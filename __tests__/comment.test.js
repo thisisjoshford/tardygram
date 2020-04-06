@@ -12,12 +12,16 @@ describe('comment routes', () => {
       .post('/api/v1/comment')
       .send({
         comment: 'Sweet Post!', 
+        commentBy: user._id,
         post: post._id
       })  
       .then(res => {
         expect(res.body).toEqual({
+          _id: expect.any(String),
           post: post._id,
-          comment: 'Sweet Post!'
+          comment: 'Sweet Post!',
+          commentBy: user._id,
+          __v: 0
         });
       });
   });
