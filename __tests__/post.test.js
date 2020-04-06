@@ -74,4 +74,23 @@ describe('post routes', () => {
       });
   });
 
+
+  it('deletes a post by id and returns result', async() => {
+    const post = await getPost();
+    return getAgent()
+      .delete(`/api/v1/post/${post._id}`)  
+      .then(res => {
+        console.log(res.body);
+        expect(res.body)
+          .toEqual({
+            _id: post._id.toString(),
+            user: expect.any(String),
+            photoUrl: post.photoUrl,
+            caption: post.caption,
+            tags: post.tags,
+            __v:0
+          });
+      });
+  });
+
 });
